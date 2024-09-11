@@ -4,6 +4,24 @@
 .background{
     width: 100%;
     height: 100vh;
-    background-image: url("resources/background.jpg");
+    background-image: url("resources/background2.jpg");
     background-size: cover;
+    background-repeat: repeat-x;
+    overflow-x: hidden;
+    position: absolute;
+}
+.boy{
+    height: 100px;
+    margin-top: 160px;
+    position: absolute;
+}
+.box{
+    width: 200px;
+    height: 200px;
+    /* background-color: red; */
+    position: absolute;
+    margin-top: 100px;
+    background-image: url(resources/linh-vuong-attack.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
