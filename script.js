@@ -46,12 +46,12 @@ function jumpAnimation(){
     jumpImageNumber=jumpImageNumber+1;
 
     if(jumpImageNumber<=6){
-        boyMarginTop=boyMarginTop-20;
+        boyMarginTop=boyMarginTop-35;
         boy.style.marginTop=boyMarginTop+"px";
     }
 
     if(jumpImageNumber >=7){
-        boyMarginTop=boyMarginTop+20;
+        boyMarginTop=boyMarginTop+35;
         boy.style.marginTop=boyMarginTop+"px";
     }
 
@@ -113,27 +113,30 @@ function keyCheck(event){
 var backgroundImagePositionX=0;
 var moveBackgroundAnimationId=0;
 
+var score=0;
+
 function moveBackground(){
     backgroundImagePositionX = backgroundImagePositionX - 20;
     document.getElementById("background").style.backgroundPositionX=backgroundImagePositionX+"px";
+    score =score+1;
+    document.getElementById("score").innerHTML=score;
 }
 
 //barriers
-boxMarginLeft=1040;
+boxMarginLeft=1540;
 
 function createBoxes(){
     
- for(var i=0; i<=10; i++){
+ for(var i=0; i<=1000; i++){
     var box = document.createElement("div");
     box.className="box";
     document.getElementById("background").appendChild(box);
     box.style.marginLeft=boxMarginLeft + "px";
     box.id="box"+i;
 
-    // boxMarginLeft = boxMarginLeft+500;
 
     if(i<5){
-        boxMarginLeft=boxMarginLeft+1000;
+        boxMarginLeft=boxMarginLeft+800;
     }
     if(i>=5){
         boxMarginLeft=boxMarginLeft+500;
@@ -144,10 +147,49 @@ function createBoxes(){
 var boxAnimationId=0;
 
 function boxAnimation(){
-    for(var i=0;i<10;i++){
+    for(var i=0;i<1000;i++){
         var box = document.getElementById("box"+i);
         var currentMarginLeft=getComputedStyle(box).marginLeft;
-        var newMarginLeft=parseInt(currentMarginLeft)-25;
+        var newMarginLeft=parseInt(currentMarginLeft)-35;
         box.style.marginLeft=newMarginLeft+ "px";
+
+        if(newMarginLeft >= -110 & newMarginLeft <=100){
+            if(boyMarginTop>159){
+                clearInterval(boxAnimationId);
+        
+                clearInterval(runAnimationNumber);
+                runAnimationNumber=-1;
+        
+                clearInterval(jumpAnimationNumber);
+                jumpAnimationNumber=-1;
+        
+                clearInterval(moveBackgroundAnimationId);
+                moveBackgroundAnimationId=-1;
+
+                deadAnimationNumber=setInterval(boyDeathAnimation,100);
+            }
+        }
+        
     }
 }
+deadImageNumber=1;
+deadAnimationNumber=0;
+
+function boyDeathAnimation(){
+    deadImageNumber=deadImageNumber+1;
+    if(deadImageNumber==11){
+        deadImageNumber=10;
+
+        document.getElementById("end").style.visibility="visible"
+        document.getElementById("endScore").innerHTML=score;
+    }
+
+    
+    
+    boy.src="resources/Dead ("+ deadImageNumber +").png";
+}
+
+function reload(){
+    location.reload();
+}
+
