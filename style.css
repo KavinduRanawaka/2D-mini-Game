@@ -16,12 +16,50 @@
     position: absolute;
 }
 .box{
-    width: 200px;
-    height: 200px;
-    /* background-color: red; */
+    width: 180px;
+    height: 180px;
     position: absolute;
-    margin-top: 100px;
+    margin-top: 120px;
     background-image: url(resources/linh-vuong-attack.gif);
     background-size: contain;
     background-repeat: no-repeat;
+}
+.score{
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 20px;
+    position: absolute;
+}
+.end{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-image: linear-gradient(90deg,#8E0E00 0%, #1F1C18 100%);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    font-family: "Broadway";
+    visibility: hidden;
+}
+.btn{
+    height: 40px;
+    width: 250px;
+    font-size: 25px;
+    font-weight: 1000;
+    background-color: aqua;
+    border: none;
+    border-radius: 20px;
+}
+.btn:hover{
+    height: 43px;
+    width: 255px;
+    background-color: rgb(0,233,233);
+    cursor: pointer;
+    color: rgb(0,0,0);
+    
 }
